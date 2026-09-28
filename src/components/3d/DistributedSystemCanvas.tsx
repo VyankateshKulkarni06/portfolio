@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Server,
   Brain,
@@ -6,20 +6,18 @@ import {
   Eye,
   Network,
   CheckCircle2,
+  Code2,
   Cpu,
-  Layers,
-  Sparkles,
 } from 'lucide-react';
 
-interface DomainNode {
+interface DomainPillar {
   id: string;
   name: string;
   shortName: string;
   subtitle: string;
   color: string;
-  cx: number;
-  cy: number;
-  r: number;
+  glowColor: string;
+  badgeBg: string;
   icon: React.ReactNode;
   summary: string;
   coreConcepts: string[];
@@ -28,18 +26,16 @@ interface DomainNode {
   appliedWork: string;
 }
 
-// 5 Equal nodes in a symmetrical pentagonal mesh: ViewBox 440 x 340, Center (220, 165), Radius 120
-const EQUAL_DOMAINS: DomainNode[] = [
+const DOMAIN_CIRCLES: DomainPillar[] = [
   {
     id: 'backend',
     name: 'Backend Systems',
     shortName: 'Backend',
     subtitle: 'Go • Spring • Microservices',
     color: '#38bdf8', // Cyan
-    cx: 220,
-    cy: 48,
-    r: 45,
-    icon: <Server className="w-4 h-4 text-cyan-400" />,
+    glowColor: 'rgba(56, 189, 248, 0.4)',
+    badgeBg: 'bg-cyan-950/60 text-cyan-300 border-cyan-800/50',
+    icon: <Server className="w-6 h-6 text-cyan-400" />,
     summary: 'High-throughput microservices, dynamic schema abstraction layers, and API orchestration.',
     coreConcepts: [
       'Microservices Orchestration',
@@ -58,10 +54,9 @@ const EQUAL_DOMAINS: DomainNode[] = [
     shortName: 'Distributed',
     subtitle: 'Redis • S3 • SSE Streaming',
     color: '#818cf8', // Indigo
-    cx: 334,
-    cy: 130,
-    r: 45,
-    icon: <Network className="w-4 h-4 text-indigo-400" />,
+    glowColor: 'rgba(129, 140, 248, 0.4)',
+    badgeBg: 'bg-indigo-950/60 text-indigo-300 border-indigo-800/50',
+    icon: <Network className="w-6 h-6 text-indigo-400" />,
     summary: 'Decoupled state management, memory optimization, and real-time streaming interfaces.',
     coreConcepts: [
       'Memory Decoupling (S3 + Redis)',
@@ -80,10 +75,9 @@ const EQUAL_DOMAINS: DomainNode[] = [
     shortName: 'Agentic AI',
     subtitle: 'Multi-Agent • 10K+ Vectors',
     color: '#c084fc', // Purple
-    cx: 290,
-    cy: 260,
-    r: 45,
-    icon: <Brain className="w-4 h-4 text-purple-400" />,
+    glowColor: 'rgba(192, 132, 252, 0.4)',
+    badgeBg: 'bg-purple-950/60 text-purple-300 border-purple-800/50',
+    icon: <Brain className="w-6 h-6 text-purple-400" />,
     summary: 'Multi-agent decision loops, vector semantic search over embeddings, and autonomous workflows.',
     coreConcepts: [
       'Two-Agent Legal Reasoning Loops',
@@ -102,10 +96,9 @@ const EQUAL_DOMAINS: DomainNode[] = [
     shortName: 'Vision / DL',
     subtitle: 'MobileNet • YOLO • 8 VLMs',
     color: '#34d399', // Emerald
-    cx: 150,
-    cy: 260,
-    r: 45,
-    icon: <Eye className="w-4 h-4 text-emerald-400" />,
+    glowColor: 'rgba(52, 211, 153, 0.4)',
+    badgeBg: 'bg-emerald-950/60 text-emerald-300 border-emerald-800/50',
+    icon: <Eye className="w-6 h-6 text-emerald-400" />,
     summary: 'Multistage neural network pipelines: CNN view verification, YOLO spatial segmentation, and 8 parallel VLM ensembles.',
     coreConcepts: [
       'MobileNet Transfer Learning',
@@ -124,10 +117,9 @@ const EQUAL_DOMAINS: DomainNode[] = [
     shortName: 'DSA / SWE',
     subtitle: '550+ Solved • LeetCode 1671',
     color: '#fbbf24', // Amber
-    cx: 106,
-    cy: 130,
-    r: 45,
-    icon: <Terminal className="w-4 h-4 text-amber-400" />,
+    glowColor: 'rgba(251, 191, 36, 0.4)',
+    badgeBg: 'bg-amber-950/60 text-amber-300 border-amber-800/50',
+    icon: <Terminal className="w-6 h-6 text-amber-400" />,
     summary: 'Competitive programming rigor, asymptotic complexity optimization, graph algorithms, and clean system design.',
     coreConcepts: [
       'Graph Traversal & DAG Scheduling',
@@ -142,36 +134,10 @@ const EQUAL_DOMAINS: DomainNode[] = [
   },
 ];
 
-// Complete graph connections (all equal pairs connected)
-const CONNECTIONS: [number, number][] = [
-  // Outer perimeter loop
-  [0, 1],
-  [1, 2],
-  [2, 3],
-  [3, 4],
-  [4, 0],
-  // Cross mesh connections
-  [0, 2],
-  [0, 3],
-  [1, 3],
-  [1, 4],
-  [2, 4],
-];
-
 export const DistributedSystemCanvas: React.FC = () => {
   const [selectedId, setSelectedId] = useState<string>('backend');
-  const [pulseProgress, setPulseProgress] = useState(0);
-
-  // Smooth pulse loop
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setPulseProgress((prev) => (prev + 1) % 100);
-    }, 45);
-    return () => clearInterval(timer);
-  }, []);
-
   const activeData =
-    EQUAL_DOMAINS.find((d) => d.id === selectedId) || EQUAL_DOMAINS[0];
+    DOMAIN_CIRCLES.find((d) => d.id === selectedId) || DOMAIN_CIRCLES[0];
 
   return (
     <div className="relative w-full rounded-2xl border border-white/10 bg-[#070b14]/90 overflow-hidden backdrop-blur-xl shadow-2xl flex flex-col font-sans">
@@ -183,156 +149,81 @@ export const DistributedSystemCanvas: React.FC = () => {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
           </span>
           <span className="text-white font-bold tracking-wider">
-            EQUAL ENGINEERING COMPETENCY MESH
+            CORE ENGINEERING DOMAINS
           </span>
         </div>
         <div className="flex items-center gap-1.5 text-[11px] text-slate-400">
-          <span className="text-cyan-400 font-semibold">5 / 5 CORE PILLARS</span>
+          <span className="text-cyan-400 font-semibold">5 STANDALONE PILLARS</span>
           <span className="text-slate-600">•</span>
-          <span>FULLY INTERCONNECTED</span>
+          <span>ALL EQUAL DEPTH</span>
         </div>
       </div>
 
-      {/* Symmetrical Equal Peer Mesh Visual */}
-      <div className="relative p-3 sm:p-5 flex items-center justify-center min-h-[300px] tech-grid-bg overflow-hidden">
-        {/* Ambient radial depth glow */}
-        <div className="absolute w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Standalone Circular Nodes (No Connecting Lines) */}
+      <div className="p-6 sm:p-8 flex items-center justify-center tech-grid-bg">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 w-full max-w-2xl justify-items-center">
+          {DOMAIN_CIRCLES.map((d) => {
+            const isSelected = selectedId === d.id;
 
-        <div className="relative w-full max-w-[440px] aspect-[440/340]">
-          <svg viewBox="0 0 440 340" className="w-full h-full drop-shadow-2xl">
-            <defs>
-              {EQUAL_DOMAINS.map((d) => (
-                <radialGradient key={`grad-${d.id}`} id={`grad-${d.id}`} cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor={d.color} stopOpacity="0.4" />
-                  <stop offset="100%" stopColor={d.color} stopOpacity="0.08" />
-                </radialGradient>
-              ))}
-            </defs>
-
-            {/* Complete Interconnecting Network Mesh Lines */}
-            {CONNECTIONS.map(([i, j], idx) => {
-              const d1 = EQUAL_DOMAINS[i];
-              const d2 = EQUAL_DOMAINS[j];
-              const isHighlighted = selectedId === d1.id || selectedId === d2.id;
-
-              return (
-                <g key={`edge-${idx}`}>
-                  <line
-                    x1={d1.cx}
-                    y1={d1.cy}
-                    x2={d2.cx}
-                    y2={d2.cy}
-                    stroke={isHighlighted ? d1.color : 'rgba(255,255,255,0.12)'}
-                    strokeWidth={isHighlighted ? '1.8' : '0.8'}
-                    strokeDasharray={isHighlighted ? 'none' : '3,3'}
-                    opacity={isHighlighted ? 0.8 : 0.4}
-                  />
-
-                  {/* Flowing signal packet along the edge */}
-                  {isHighlighted && (
-                    <circle
-                      cx={d1.cx + ((d2.cx - d1.cx) * (pulseProgress % 100)) / 100}
-                      cy={d1.cy + ((d2.cy - d1.cy) * (pulseProgress % 100)) / 100}
-                      r={2}
-                      fill={d1.color}
-                      className="drop-shadow-[0_0_6px_currentColor]"
-                    />
-                  )}
-                </g>
-              );
-            })}
-
-            {/* 5 Equal Circular Nodes */}
-            {EQUAL_DOMAINS.map((d) => {
-              const isSelected = selectedId === d.id;
-
-              return (
-                <g
-                  key={d.id}
-                  onClick={() => setSelectedId(d.id)}
-                  className="cursor-pointer transition-all duration-300 group"
+            return (
+              <div
+                key={d.id}
+                onClick={() => setSelectedId(d.id)}
+                className="flex flex-col items-center gap-2 cursor-pointer group"
+              >
+                {/* Independent Glowing Circle */}
+                <div
+                  className={`relative w-24 h-24 sm:w-28 sm:h-28 rounded-full flex flex-col items-center justify-center p-3 text-center transition-all duration-300 ${
+                    isSelected
+                      ? 'scale-105 ring-2 ring-white/60 shadow-[0_0_30px_rgba(255,255,255,0.2)]'
+                      : 'hover:scale-105 border border-white/10 hover:border-white/30'
+                  }`}
+                  style={{
+                    backgroundColor: isSelected ? 'rgba(15, 23, 42, 0.95)' : 'rgba(11, 16, 27, 0.7)',
+                    borderColor: isSelected ? d.color : undefined,
+                    boxShadow: isSelected ? `0 0 25px ${d.glowColor}` : undefined,
+                  }}
                 >
-                  {/* Outer selection ring */}
+                  {/* Subtle inner pulse ring */}
                   {isSelected && (
-                    <circle
-                      cx={d.cx}
-                      cy={d.cy}
-                      r={d.r + 5}
-                      fill="none"
-                      stroke={d.color}
-                      strokeWidth="2"
-                      strokeDasharray="4,4"
-                      className="animate-spin"
-                      style={{ transformOrigin: `${d.cx}px ${d.cy}px`, animationDuration: '8s' }}
+                    <div
+                      className="absolute inset-1 rounded-full border border-dashed animate-spin pointer-events-none"
+                      style={{
+                        borderColor: d.color,
+                        animationDuration: '10s',
+                      }}
                     />
                   )}
 
-                  {/* Node Circle */}
-                  <circle
-                    cx={d.cx}
-                    cy={d.cy}
-                    r={d.r}
-                    fill={`url(#grad-${d.id})`}
-                    stroke={isSelected ? d.color : 'rgba(255,255,255,0.25)'}
-                    strokeWidth={isSelected ? '2.5' : '1.5'}
-                    className="group-hover:stroke-white transition-all shadow-xl"
-                  />
+                  {/* Icon */}
+                  <div className="mb-1">{d.icon}</div>
 
-                  {/* Domain Name */}
-                  <text
-                    x={d.cx}
-                    y={d.cy - 7}
-                    textAnchor="middle"
-                    fill="#ffffff"
-                    fontSize="10"
-                    fontWeight="800"
-                    fontFamily="sans-serif"
-                    letterSpacing="0.02em"
-                  >
+                  {/* Domain Title */}
+                  <span className="text-[11px] sm:text-xs font-bold text-white tracking-tight leading-tight">
                     {d.shortName}
-                  </text>
+                  </span>
+                </div>
 
-                  {/* Micro Tech Pill */}
-                  <text
-                    x={d.cx}
-                    y={d.cy + 10}
-                    textAnchor="middle"
-                    fill={d.color}
-                    fontSize="8"
-                    fontFamily="monospace"
-                    fontWeight="600"
-                  >
-                    {d.techStack[0]} • {d.techStack[1]}
-                  </text>
-                </g>
-              );
-            })}
-          </svg>
+                {/* Subtitle tag below circle */}
+                <span
+                  className={`text-[10px] font-mono px-2 py-0.5 rounded-full border transition-all text-center max-w-[110px] truncate ${
+                    isSelected
+                      ? d.badgeBg
+                      : 'bg-slate-900/60 text-slate-400 border-white/5'
+                  }`}
+                >
+                  {d.techStack[0]}
+                </span>
+              </div>
+            );
+          })}
         </div>
-      </div>
-
-      {/* Domain Quick-Select Filter Tabs */}
-      <div className="px-3 py-2 bg-[#060a12] border-t border-b border-white/5 flex flex-wrap gap-1.5 justify-center">
-        {EQUAL_DOMAINS.map((d) => (
-          <button
-            key={d.id}
-            onClick={() => setSelectedId(d.id)}
-            className={`px-2.5 py-1 rounded-lg text-xs font-mono transition-all cursor-pointer flex items-center gap-1.5 ${
-              selectedId === d.id
-                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm'
-                : 'bg-slate-900/50 text-slate-400 hover:text-white border border-white/5'
-            }`}
-          >
-            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: d.color }} />
-            <span>{d.name}</span>
-          </button>
-        ))}
       </div>
 
       {/* Selected Domain Breakdown Drawer */}
-      <div className="bg-[#05080f] p-4 sm:p-5 font-sans space-y-3">
+      <div className="border-t border-white/10 bg-[#060a12] p-4 sm:p-5 font-sans space-y-3">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-2">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <span
               className="w-3 h-3 rounded-full"
               style={{ backgroundColor: activeData.color }}
@@ -346,14 +237,14 @@ export const DistributedSystemCanvas: React.FC = () => {
           </span>
         </div>
 
-        <p className="text-xs text-slate-300 leading-relaxed">
+        <p className="text-xs text-slate-300 leading-relaxed font-sans">
           {activeData.summary}
         </p>
 
         {/* Mastered Concepts Badges */}
         <div className="space-y-1">
           <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider block">
-            MASTERED ARCHITECTURAL CONCEPTS
+            CONCEPTS & ARCHITECTURAL PATTERNS
           </span>
           <div className="flex flex-wrap gap-1.5">
             {activeData.coreConcepts.map((concept) => (
