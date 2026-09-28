@@ -50,7 +50,7 @@ export const PERSONAL_INFO = {
   email: 'kulkarnivyankatesh26@gmail.com',
   github: 'https://github.com/VyankateshKulkarni06',
   linkedin: 'https://www.linkedin.com/in/vyankatesh-kulkarni-30a208292/',
-  resumeUrl: '/Vyankatesh_Kulkarni_Resume.pdf',
+  resumeUrl: '/Vyankatesh_Kulkarni_Resume_SDE.pdf',
   location: 'Pune, India',
 };
 

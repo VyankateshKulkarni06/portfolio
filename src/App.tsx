@@ -46,9 +46,6 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-[#07090e] text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-200">
-      {/* Precision Custom Desktop Cursor */}
-      <CustomCursor />
-
       {/* Floating Section Dock for 1-Click Smooth Navigation */}
       <SectionDock />
 

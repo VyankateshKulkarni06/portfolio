@@ -96,7 +96,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
         <div className="flex items-center gap-2.5">
           <a
             href={PERSONAL_INFO.resumeUrl}
-            download="Vyankatesh_Kulkarni_Resume.pdf"
+            download="Vyankatesh_Kulkarni_Resume_SDE.pdf"
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-medium text-cyan-300 bg-cyan-950/40 border border-cyan-800/60 hover:bg-cyan-900/50 hover:border-cyan-500 transition-all cursor-pointer"
             aria-label="Download Resume PDF"
           >
@@ -154,7 +154,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
             <div className="pt-4 flex items-center gap-3">
               <a
                 href={PERSONAL_INFO.resumeUrl}
-                download="Vyankatesh_Kulkarni_Resume.pdf"
+                download="Vyankatesh_Kulkarni_Resume_SDE.pdf"
                 className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-xs font-mono text-center bg-cyan-500/20 text-cyan-300 border border-cyan-500/40"
               >
                 <Download className="w-4 h-4" />

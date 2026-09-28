@@ -34,7 +34,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             </div>
 
             {/* Engineer Name */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-sans leading-[1.1]">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-sans leading-[1.1]">
               Vyankatesh <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-300">
                 Kulkarni
@@ -42,36 +42,36 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             </h1>
 
             {/* Role & Headline */}
-            <h2 className="mt-4 text-xl sm:text-2xl font-semibold text-slate-200 tracking-tight leading-snug">
+            <h2 className="mt-3 sm:mt-4 text-lg sm:text-2xl font-semibold text-slate-200 tracking-tight leading-snug">
               {PERSONAL_INFO.headline}
             </h2>
 
             {/* Supporting Statement */}
-            <p className="mt-4 text-base sm:text-lg text-slate-400 leading-relaxed font-sans max-w-xl">
+            <p className="mt-3 sm:mt-4 text-sm sm:text-lg text-slate-400 leading-relaxed font-sans max-w-xl">
               {PERSONAL_INFO.subheadline}
             </p>
 
             {/* Micro Telemetry Strip */}
-            <div className="mt-6 grid grid-cols-3 gap-3 py-3 border-y border-white/10 max-w-xl font-mono text-xs">
+            <div className="mt-5 sm:mt-6 grid grid-cols-3 gap-2 sm:gap-3 py-3 border-y border-white/10 max-w-xl font-mono text-xs">
               <div className="flex flex-col">
-                <span className="text-slate-500 text-[10px]">COVERAGE SURGE</span>
-                <span className="text-cyan-300 font-bold">8% → 47%</span>
+                <span className="text-slate-500 text-[9px] sm:text-[10px]">COVERAGE SURGE</span>
+                <span className="text-cyan-300 font-bold text-xs sm:text-sm">8% → 47%</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-slate-500 text-[10px]">API REDUCTION</span>
-                <span className="text-cyan-300 font-bold">~3× Less Load</span>
+                <span className="text-slate-500 text-[9px] sm:text-[10px]">API REDUCTION</span>
+                <span className="text-cyan-300 font-bold text-xs sm:text-sm">~3× Less Load</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-slate-500 text-[10px]">LEETCODE</span>
-                <span className="text-cyan-300 font-bold">550+ (1671)</span>
+                <span className="text-slate-500 text-[9px] sm:text-[10px]">LEETCODE</span>
+                <span className="text-cyan-300 font-bold text-xs sm:text-sm">550+ (1671)</span>
               </div>
             </div>
 
             {/* Actions */}
-            <div className="mt-8 flex flex-wrap items-center gap-3.5">
+            <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-3">
               <a
                 href="#experience"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-[#07090e] font-semibold text-sm transition-all shadow-[0_0_20px_rgba(56,189,248,0.25)] hover:shadow-[0_0_25px_rgba(56,189,248,0.4)] cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-[#07090e] font-semibold text-sm transition-all shadow-[0_0_20px_rgba(56,189,248,0.25)] hover:shadow-[0_0_25px_rgba(56,189,248,0.4)] cursor-pointer"
               >
                 <span>View Engineering Work</span>
                 <ChevronRight className="w-4 h-4" />
@@ -80,7 +80,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
               <a
                 href={PERSONAL_INFO.resumeUrl}
                 download="Vyankatesh_Kulkarni_Resume.pdf"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#0e1626] hover:bg-[#152037] text-slate-200 hover:text-white border border-white/10 hover:border-cyan-500/40 font-mono text-xs font-semibold transition-all cursor-pointer"
+                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#0e1626] hover:bg-[#152037] text-slate-200 hover:text-white border border-white/10 hover:border-cyan-500/40 font-mono text-xs font-semibold transition-all cursor-pointer"
               >
                 <FileText className="w-4 h-4 text-cyan-400" />
                 <span>Resume (PDF)</span>

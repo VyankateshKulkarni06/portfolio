@@ -142,15 +142,17 @@ export const DistributedSystemCanvas: React.FC = () => {
 
       {/* Visual Navigation Nodes (Circular Pods) */}
       <div className="p-4 sm:p-5 border-b border-white/5 bg-[#060a12] tech-grid-bg">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-          {DOMAINS.map((domain) => {
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3">
+          {DOMAINS.map((domain, idx) => {
             const isSelected = activeTab === domain.id;
 
             return (
               <div
                 key={domain.id}
                 onClick={() => setActiveTab(domain.id)}
-                className={`p-3.5 rounded-xl border transition-all duration-300 cursor-pointer flex flex-col items-center text-center gap-2 relative ${
+                className={`p-3 sm:p-3.5 rounded-xl border transition-all duration-300 cursor-pointer flex flex-col items-center text-center gap-2 relative ${
+                  idx === 4 ? 'col-span-2 sm:col-span-1' : ''
+                } ${
                   isSelected
                     ? 'bg-[#0f172a] border-cyan-400 shadow-[0_0_20px_rgba(56,189,248,0.25)] scale-[1.02]'
                     : 'bg-slate-900/40 border-white/5 hover:border-white/20 hover:bg-slate-900/70'
