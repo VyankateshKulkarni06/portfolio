@@ -6,138 +6,121 @@ import {
   Eye,
   Network,
   CheckCircle2,
-  Code2,
+  Sparkles,
+  Layers,
   Cpu,
 } from 'lucide-react';
 
-interface DomainPillar {
+interface DomainItem {
   id: string;
-  name: string;
-  shortName: string;
-  subtitle: string;
+  title: string;
+  category: string;
+  metric: string;
   color: string;
-  glowColor: string;
-  badgeBg: string;
+  accentBg: string;
+  borderHover: string;
   icon: React.ReactNode;
-  summary: string;
-  coreConcepts: string[];
+  concepts: string[];
   techStack: string[];
-  verifiedMetric: string;
-  appliedWork: string;
+  evidence: string;
 }
 
-const DOMAIN_CIRCLES: DomainPillar[] = [
+const DOMAINS: DomainItem[] = [
   {
     id: 'backend',
-    name: 'Backend Systems',
-    shortName: 'Backend',
-    subtitle: 'Go • Spring • Microservices',
-    color: '#38bdf8', // Cyan
-    glowColor: 'rgba(56, 189, 248, 0.4)',
-    badgeBg: 'bg-cyan-950/60 text-cyan-300 border-cyan-800/50',
-    icon: <Server className="w-6 h-6 text-cyan-400" />,
-    summary: 'High-throughput microservices, dynamic schema abstraction layers, and API orchestration.',
-    coreConcepts: [
-      'Microservices Orchestration',
-      'Dynamic Schema Transformations',
-      'REST & Swagger / OpenAPI Specs',
-      'Public-to-Private Field Mapping',
-      'Stateless Ingress Routing',
+    title: 'Backend Systems',
+    category: 'MICROSERVICES & APIS',
+    metric: '220+ Config Abstractions',
+    color: '#38bdf8',
+    accentBg: 'from-cyan-950/40 to-slate-900/40',
+    borderHover: 'hover:border-cyan-400/60',
+    icon: <Server className="w-5 h-5 text-cyan-400" />,
+    concepts: [
+      'Microservices Architecture & Ingress',
+      'Dynamic Schema Transformation Engine',
+      'Swagger / OpenAPI Automated Contracts',
+      'Public-to-Private Model Mapping',
     ],
-    techStack: ['Go', 'Spring Boot', 'FastAPI', 'Node.js', 'REST APIs', 'Swagger', 'Docker'],
-    verifiedMetric: '220+ Config Abstractions • Go Workflow Backend',
-    appliedWork: 'Engineered unified Spring Boot API abstraction layer for 220+ source/destination configs with dynamic Swagger schemas at Databahn.ai.',
+    techStack: ['Go', 'Spring Boot', 'FastAPI', 'Node.js', 'Docker', 'REST'],
+    evidence: 'Engineered unified Spring Boot API layer for 220+ source/destination configs at Databahn.ai.',
   },
   {
     id: 'distributed',
-    name: 'Distributed Systems',
-    shortName: 'Distributed',
-    subtitle: 'Redis • S3 • SSE Streaming',
-    color: '#818cf8', // Indigo
-    glowColor: 'rgba(129, 140, 248, 0.4)',
-    badgeBg: 'bg-indigo-950/60 text-indigo-300 border-indigo-800/50',
-    icon: <Network className="w-6 h-6 text-indigo-400" />,
-    summary: 'Decoupled state management, memory optimization, and real-time streaming interfaces.',
-    coreConcepts: [
-      'Memory Decoupling (S3 + Redis)',
-      'Server-Sent Events (SSE) Streaming',
-      'Adaptive Polling (10s → 45s, 3× cut)',
-      'Shared Infra Test Chaining (5-6 min saved)',
-      'High Concurrency & Fault Tolerance',
+    title: 'Distributed Systems',
+    category: 'CLOUD & ARCHITECTURE',
+    metric: '~3× Request Cut • Zero OOM',
+    color: '#818cf8',
+    accentBg: 'from-indigo-950/40 to-slate-900/40',
+    borderHover: 'hover:border-indigo-400/60',
+    icon: <Network className="w-5 h-5 text-indigo-400" />,
+    concepts: [
+      'Memory Decoupling (Amazon S3 + Redis)',
+      'Server-Sent Events (SSE) Progress Streaming',
+      'Adaptive Polling Optimization (10s → 45s)',
+      'Shared Infra Chaining (~5-6 min saved)',
     ],
-    techStack: ['Redis', 'Amazon S3', 'Server-Sent Events (SSE)', 'Kafka / Async', 'Microservices'],
-    verifiedMetric: 'Zero Heap Spikes • ~3× Request Cut',
-    appliedWork: 'Designed presigned S3 + Redis case caching avoiding backend OOM crashes on high-res photos, streaming real-time SSE progress.',
+    techStack: ['Redis', 'Amazon S3', 'Server-Sent Events', 'Kafka/Async', 'PostgreSQL'],
+    evidence: 'Presigned S3 URLs + Redis metadata keys eliminated memory heap crashes on multi-image uploads.',
   },
   {
     id: 'agentic',
-    name: 'Agentic AI Systems',
-    shortName: 'Agentic AI',
-    subtitle: 'Multi-Agent • 10K+ Vectors',
-    color: '#c084fc', // Purple
-    glowColor: 'rgba(192, 132, 252, 0.4)',
-    badgeBg: 'bg-purple-950/60 text-purple-300 border-purple-800/50',
-    icon: <Brain className="w-6 h-6 text-purple-400" />,
-    summary: 'Multi-agent decision loops, vector semantic search over embeddings, and autonomous workflows.',
-    coreConcepts: [
-      'Two-Agent Legal Reasoning Loops',
-      'Dense Vector Embeddings & Similarity',
-      'Top-5 Nearest Neighbor Retrieval',
+    title: 'Agentic AI Systems',
+    category: 'REASONING & VECTORS',
+    metric: '10K+ Vector Corpus • Top-5',
+    color: '#c084fc',
+    accentBg: 'from-purple-950/40 to-slate-900/40',
+    borderHover: 'hover:border-purple-400/60',
+    icon: <Brain className="w-5 h-5 text-purple-400" />,
+    concepts: [
+      'Two-Agent Legal Reasoning Pipeline',
+      'Dense Embeddings & Cosine Similarity',
       'Autonomous Ticket Classification Agent',
       'Context Budgeting & Anti-Hallucination',
     ],
     techStack: ['Agentic AI', 'Vector Search', 'Cosine Similarity', 'FastAPI', 'External APIs'],
-    verifiedMetric: '10K+ Vector Case Corpus • 270+ Tickets Classified',
-    appliedWork: 'Built NyayaGPT two-agent legal query reasoning system over 10K+ case records and an agentic classifier triaging TestRail backend cases.',
+    evidence: 'Built NyayaGPT 2-agent legal search over 10K+ cases and autonomous TestRail test triaging.',
   },
   {
     id: 'vision',
-    name: 'Deep Learning & CV',
-    shortName: 'Vision / DL',
-    subtitle: 'MobileNet • YOLO • 8 VLMs',
-    color: '#34d399', // Emerald
-    glowColor: 'rgba(52, 211, 153, 0.4)',
-    badgeBg: 'bg-emerald-950/60 text-emerald-300 border-emerald-800/50',
-    icon: <Eye className="w-6 h-6 text-emerald-400" />,
-    summary: 'Multistage neural network pipelines: CNN view verification, YOLO spatial segmentation, and 8 parallel VLM ensembles.',
-    coreConcepts: [
-      'MobileNet Transfer Learning',
+    title: 'Deep Learning & CV',
+    category: 'COMPUTER VISION',
+    metric: '~98% / ~95% / ~85% Acc',
+    color: '#34d399',
+    accentBg: 'from-emerald-950/40 to-slate-900/40',
+    borderHover: 'hover:border-emerald-400/60',
+    icon: <Eye className="w-5 h-5 text-emerald-400" />,
+    concepts: [
+      'MobileNet Multi-Angle View Validation',
       'YOLO Spatial Tooth Segmentation',
       '8 Parallel Specialized VLM Ensembles',
-      'Automated DMFT Scoring Parser',
-      'Clinical Odontogram Vector Reports',
+      'Automated Clinical DMFT Scoring & SVG',
     ],
-    techStack: ['MobileNet', 'YOLOv8', 'VLM Agents', 'PyTorch', 'TensorFlow', 'OpenCV'],
-    verifiedMetric: '~98% View Acc • ~95% Tooth Acc • ~85% Disease Acc',
-    appliedWork: 'Architected and deployed CarieCheck live AI diagnosis platform processing 8 photos + 14 questions into automated tooth-wise medical reports.',
+    techStack: ['MobileNet', 'YOLOv8', 'VLM Agents', 'PyTorch', 'OpenCV'],
+    evidence: 'Delivered CarieCheck clinical dental platform processing 8 photos + 14 questions for Bharti Hospitals.',
   },
   {
-    id: 'swe',
-    name: 'Algorithms & DSA',
-    shortName: 'DSA / SWE',
-    subtitle: '550+ Solved • LeetCode 1671',
-    color: '#fbbf24', // Amber
-    glowColor: 'rgba(251, 191, 36, 0.4)',
-    badgeBg: 'bg-amber-950/60 text-amber-300 border-amber-800/50',
-    icon: <Terminal className="w-6 h-6 text-amber-400" />,
-    summary: 'Competitive programming rigor, asymptotic complexity optimization, graph algorithms, and clean system design.',
-    coreConcepts: [
-      'Graph Traversal & DAG Scheduling',
+    id: 'dsa',
+    title: 'Algorithms & SWE',
+    category: 'COMPETITIVE PROBLEM SOLVING',
+    metric: '550+ Solved • Peak LC 1671',
+    color: '#fbbf24',
+    accentBg: 'from-amber-950/40 to-slate-900/40',
+    borderHover: 'hover:border-amber-400/60',
+    icon: <Terminal className="w-5 h-5 text-amber-400" />,
+    concepts: [
+      'Graph Theory & DAG Scheduling',
       'Dynamic Programming State Spaces',
       'Tree Traversals & Priority Heaps',
       'Asymptotic Complexity Optimization',
-      'Concurrency & Operating Systems',
     ],
-    techStack: ['C++', 'Competitive DSA', 'System Design', 'Operating Systems', 'DBMS', 'OOP'],
-    verifiedMetric: '550+ Problems Solved • 1671 Peak LeetCode Rating',
-    appliedWork: '550+ DSA problems solved in C++ with 1671 contest rating, applying graph dependency and caching algorithms to production workflows.',
+    techStack: ['C++', 'Competitive DSA', 'System Design', 'Operating Systems', 'DBMS'],
+    evidence: '550+ problems solved with peak 1671 contest rating, applying graph and caching algorithms to systems.',
   },
 ];
 
 export const DistributedSystemCanvas: React.FC = () => {
-  const [selectedId, setSelectedId] = useState<string>('backend');
-  const activeData =
-    DOMAIN_CIRCLES.find((d) => d.id === selectedId) || DOMAIN_CIRCLES[0];
+  const [activeTab, setActiveTab] = useState<string>('backend');
+  const activeDomain = DOMAINS.find((d) => d.id === activeTab) || DOMAINS[0];
 
   return (
     <div className="relative w-full rounded-2xl border border-white/10 bg-[#070b14]/90 overflow-hidden backdrop-blur-xl shadow-2xl flex flex-col font-sans">
@@ -149,122 +132,130 @@ export const DistributedSystemCanvas: React.FC = () => {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
           </span>
           <span className="text-white font-bold tracking-wider">
-            CORE ENGINEERING DOMAINS
+            CORE ENGINEERING COMPETENCIES
           </span>
         </div>
-        <div className="flex items-center gap-1.5 text-[11px] text-slate-400">
-          <span className="text-cyan-400 font-semibold">5 STANDALONE PILLARS</span>
-          <span className="text-slate-600">•</span>
-          <span>ALL EQUAL DEPTH</span>
+        <div className="flex items-center gap-2 text-[11px] text-slate-400">
+          <span className="text-cyan-400 font-semibold">ALL 5 DISCIPLINES VERIFIED</span>
         </div>
       </div>
 
-      {/* Standalone Circular Nodes (No Connecting Lines) */}
-      <div className="p-6 sm:p-8 flex items-center justify-center tech-grid-bg">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 w-full max-w-2xl justify-items-center">
-          {DOMAIN_CIRCLES.map((d) => {
-            const isSelected = selectedId === d.id;
+      {/* Visual Navigation Nodes (Circular Pods) */}
+      <div className="p-4 sm:p-5 border-b border-white/5 bg-[#060a12] tech-grid-bg">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+          {DOMAINS.map((domain) => {
+            const isSelected = activeTab === domain.id;
 
             return (
               <div
-                key={d.id}
-                onClick={() => setSelectedId(d.id)}
-                className="flex flex-col items-center gap-2 cursor-pointer group"
+                key={domain.id}
+                onClick={() => setActiveTab(domain.id)}
+                className={`p-3.5 rounded-xl border transition-all duration-300 cursor-pointer flex flex-col items-center text-center gap-2 relative ${
+                  isSelected
+                    ? 'bg-[#0f172a] border-cyan-400 shadow-[0_0_20px_rgba(56,189,248,0.25)] scale-[1.02]'
+                    : 'bg-slate-900/40 border-white/5 hover:border-white/20 hover:bg-slate-900/70'
+                }`}
               >
-                {/* Independent Glowing Circle */}
+                {/* Glowing Circular Icon Pod */}
                 <div
-                  className={`relative w-24 h-24 sm:w-28 sm:h-28 rounded-full flex flex-col items-center justify-center p-3 text-center transition-all duration-300 ${
-                    isSelected
-                      ? 'scale-105 ring-2 ring-white/60 shadow-[0_0_30px_rgba(255,255,255,0.2)]'
-                      : 'hover:scale-105 border border-white/10 hover:border-white/30'
-                  }`}
+                  className="w-12 h-12 rounded-full flex items-center justify-center border transition-all"
                   style={{
-                    backgroundColor: isSelected ? 'rgba(15, 23, 42, 0.95)' : 'rgba(11, 16, 27, 0.7)',
-                    borderColor: isSelected ? d.color : undefined,
-                    boxShadow: isSelected ? `0 0 25px ${d.glowColor}` : undefined,
+                    backgroundColor: isSelected ? 'rgba(15, 23, 42, 0.9)' : 'rgba(11, 16, 27, 0.6)',
+                    borderColor: isSelected ? domain.color : 'rgba(255,255,255,0.1)',
+                    boxShadow: isSelected ? `0 0 16px ${domain.color}40` : undefined,
                   }}
                 >
-                  {/* Subtle inner pulse ring */}
-                  {isSelected && (
-                    <div
-                      className="absolute inset-1 rounded-full border border-dashed animate-spin pointer-events-none"
-                      style={{
-                        borderColor: d.color,
-                        animationDuration: '10s',
-                      }}
-                    />
-                  )}
-
-                  {/* Icon */}
-                  <div className="mb-1">{d.icon}</div>
-
-                  {/* Domain Title */}
-                  <span className="text-[11px] sm:text-xs font-bold text-white tracking-tight leading-tight">
-                    {d.shortName}
-                  </span>
+                  {domain.icon}
                 </div>
 
-                {/* Subtitle tag below circle */}
-                <span
-                  className={`text-[10px] font-mono px-2 py-0.5 rounded-full border transition-all text-center max-w-[110px] truncate ${
-                    isSelected
-                      ? d.badgeBg
-                      : 'bg-slate-900/60 text-slate-400 border-white/5'
-                  }`}
-                >
-                  {d.techStack[0]}
-                </span>
+                {/* Title */}
+                <div>
+                  <h4 className="text-xs font-bold text-white tracking-tight">
+                    {domain.title}
+                  </h4>
+                  <span
+                    className="font-mono text-[10px] block mt-0.5"
+                    style={{ color: domain.color }}
+                  >
+                    {domain.metric.split('•')[0]}
+                  </span>
+                </div>
               </div>
             );
           })}
         </div>
       </div>
 
-      {/* Selected Domain Breakdown Drawer */}
-      <div className="border-t border-white/10 bg-[#060a12] p-4 sm:p-5 font-sans space-y-3">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-2">
-          <div className="flex items-center gap-2.5">
-            <span
-              className="w-3 h-3 rounded-full"
-              style={{ backgroundColor: activeData.color }}
-            />
-            <h4 className="text-sm font-bold text-white tracking-wide">
-              {activeData.name}
-            </h4>
+      {/* Rich Detailed Conceptual Breakdown of Selected Domain */}
+      <div className="p-5 sm:p-6 bg-gradient-to-b from-[#070c18] to-[#050810] space-y-4 font-sans">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-3">
+          <div className="flex items-center gap-3">
+            <div
+              className="p-2.5 rounded-xl bg-slate-900 border border-white/10 shrink-0"
+              style={{ color: activeDomain.color }}
+            >
+              {activeDomain.icon}
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h3 className="text-base font-bold text-white">
+                  {activeDomain.title}
+                </h3>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 border border-white/10 text-slate-300">
+                  {activeDomain.category}
+                </span>
+              </div>
+              <span className="font-mono text-xs text-cyan-300">
+                {activeDomain.metric}
+              </span>
+            </div>
           </div>
-          <span className="font-mono text-xs text-cyan-300 bg-cyan-950/60 px-2.5 py-0.5 rounded border border-cyan-800/40">
-            {activeData.verifiedMetric}
-          </span>
         </div>
 
-        <p className="text-xs text-slate-300 leading-relaxed font-sans">
-          {activeData.summary}
-        </p>
-
-        {/* Mastered Concepts Badges */}
-        <div className="space-y-1">
-          <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider block">
-            CONCEPTS & ARCHITECTURAL PATTERNS
+        {/* Mastered Concepts Grid */}
+        <div>
+          <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block mb-2">
+            // MASTERED ARCHITECTURAL CONCEPTS & PATTERNS
           </span>
-          <div className="flex flex-wrap gap-1.5">
-            {activeData.coreConcepts.map((concept) => (
-              <span
-                key={concept}
-                className="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-900 border border-white/10 text-slate-200"
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            {activeDomain.concepts.map((concept, idx) => (
+              <div
+                key={idx}
+                className="p-2.5 rounded-lg bg-slate-900/70 border border-white/5 flex items-center gap-2 text-slate-200"
               >
-                {concept}
-              </span>
+                <span
+                  className="w-1.5 h-1.5 rounded-full shrink-0"
+                  style={{ backgroundColor: activeDomain.color }}
+                />
+                <span className="font-medium">{concept}</span>
+              </div>
             ))}
           </div>
         </div>
 
         {/* Applied Engineering Evidence */}
-        <div className="pt-2 border-t border-white/5 flex items-start gap-2 text-xs font-mono text-slate-400">
-          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 mt-0.5 shrink-0" />
-          <span>
-            <strong className="text-slate-200 font-sans">Applied in Practice:</strong>{' '}
-            {activeData.appliedWork}
+        <div className="p-3 rounded-xl bg-cyan-950/20 border border-cyan-800/30 text-xs">
+          <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-wider block mb-1">
+            // PRODUCTION EVIDENCE
           </span>
+          <p className="text-slate-300 leading-relaxed font-sans">
+            {activeDomain.evidence}
+          </p>
+        </div>
+
+        {/* Technology Badges */}
+        <div className="flex flex-wrap items-center gap-1.5 pt-1">
+          <span className="text-[10px] font-mono text-slate-500 uppercase mr-1">
+            TOOLCHAIN:
+          </span>
+          {activeDomain.techStack.map((tech) => (
+            <span
+              key={tech}
+              className="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-900 border border-white/10 text-slate-300"
+            >
+              {tech}
+            </span>
+          ))}
         </div>
       </div>
     </div>
