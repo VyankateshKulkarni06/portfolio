@@ -5,46 +5,46 @@ import {
   Terminal,
   Eye,
   Network,
-  Sparkles,
   CheckCircle2,
   Cpu,
   Layers,
-  Zap,
+  Sparkles,
 } from 'lucide-react';
 
 interface DomainNode {
   id: string;
   name: string;
   shortName: string;
+  subtitle: string;
   color: string;
-  glowColor: string;
   cx: number;
   cy: number;
   r: number;
   icon: React.ReactNode;
-  tagline: string;
+  summary: string;
   coreConcepts: string[];
   techStack: string[];
   verifiedMetric: string;
   appliedWork: string;
 }
 
-const DOMAIN_NODES: DomainNode[] = [
+// 5 Equal nodes in a symmetrical pentagonal mesh: ViewBox 440 x 340, Center (220, 165), Radius 120
+const EQUAL_DOMAINS: DomainNode[] = [
   {
     id: 'backend',
-    name: 'Backend & Microservices',
-    shortName: 'Backend Systems',
-    color: '#38bdf8',
-    glowColor: 'rgba(56, 189, 248, 0.4)',
-    cx: 95,
-    cy: 85,
-    r: 58,
-    icon: <Server className="w-5 h-5 text-cyan-400" />,
-    tagline: 'High-throughput microservices, dynamic schema abstraction & API orchestration.',
+    name: 'Backend Systems',
+    shortName: 'Backend',
+    subtitle: 'Go • Spring • Microservices',
+    color: '#38bdf8', // Cyan
+    cx: 220,
+    cy: 48,
+    r: 45,
+    icon: <Server className="w-4 h-4 text-cyan-400" />,
+    summary: 'High-throughput microservices, dynamic schema abstraction layers, and API orchestration.',
     coreConcepts: [
       'Microservices Orchestration',
       'Dynamic Schema Transformations',
-      'REST & Swagger / OpenAPI Contracts',
+      'REST & Swagger / OpenAPI Specs',
       'Public-to-Private Field Mapping',
       'Stateless Ingress Routing',
     ],
@@ -53,16 +53,38 @@ const DOMAIN_NODES: DomainNode[] = [
     appliedWork: 'Engineered unified Spring Boot API abstraction layer for 220+ source/destination configs with dynamic Swagger schemas at Databahn.ai.',
   },
   {
+    id: 'distributed',
+    name: 'Distributed Systems',
+    shortName: 'Distributed',
+    subtitle: 'Redis • S3 • SSE Streaming',
+    color: '#818cf8', // Indigo
+    cx: 334,
+    cy: 130,
+    r: 45,
+    icon: <Network className="w-4 h-4 text-indigo-400" />,
+    summary: 'Decoupled state management, memory optimization, and real-time streaming interfaces.',
+    coreConcepts: [
+      'Memory Decoupling (S3 + Redis)',
+      'Server-Sent Events (SSE) Streaming',
+      'Adaptive Polling (10s → 45s, 3× cut)',
+      'Shared Infra Test Chaining (5-6 min saved)',
+      'High Concurrency & Fault Tolerance',
+    ],
+    techStack: ['Redis', 'Amazon S3', 'Server-Sent Events (SSE)', 'Kafka / Async', 'Microservices'],
+    verifiedMetric: 'Zero Heap Spikes • ~3× Request Cut',
+    appliedWork: 'Designed presigned S3 + Redis case caching avoiding backend OOM crashes on high-res photos, streaming real-time SSE progress.',
+  },
+  {
     id: 'agentic',
-    name: 'Agentic AI & Reasoning Systems',
+    name: 'Agentic AI Systems',
     shortName: 'Agentic AI',
-    color: '#818cf8',
-    glowColor: 'rgba(129, 140, 248, 0.4)',
-    cx: 365,
-    cy: 85,
-    r: 58,
-    icon: <Brain className="w-5 h-5 text-indigo-400" />,
-    tagline: 'Multi-agent decision loops, vector semantic search over embeddings & reasoning.',
+    subtitle: 'Multi-Agent • 10K+ Vectors',
+    color: '#c084fc', // Purple
+    cx: 290,
+    cy: 260,
+    r: 45,
+    icon: <Brain className="w-4 h-4 text-purple-400" />,
+    summary: 'Multi-agent decision loops, vector semantic search over embeddings, and autonomous workflows.',
     coreConcepts: [
       'Two-Agent Legal Reasoning Loops',
       'Dense Vector Embeddings & Similarity',
@@ -76,15 +98,15 @@ const DOMAIN_NODES: DomainNode[] = [
   },
   {
     id: 'vision',
-    name: 'Deep Learning & Computer Vision',
-    shortName: 'Deep Learning & CV',
-    color: '#34d399',
-    glowColor: 'rgba(52, 211, 153, 0.4)',
-    cx: 95,
-    cy: 285,
-    r: 58,
-    icon: <Eye className="w-5 h-5 text-emerald-400" />,
-    tagline: 'Multistage neural network pipelines: CNN view verification, YOLO & VLMs.',
+    name: 'Deep Learning & CV',
+    shortName: 'Vision / DL',
+    subtitle: 'MobileNet • YOLO • 8 VLMs',
+    color: '#34d399', // Emerald
+    cx: 150,
+    cy: 260,
+    r: 45,
+    icon: <Eye className="w-4 h-4 text-emerald-400" />,
+    summary: 'Multistage neural network pipelines: CNN view verification, YOLO spatial segmentation, and 8 parallel VLM ensembles.',
     coreConcepts: [
       'MobileNet Transfer Learning',
       'YOLO Spatial Tooth Segmentation',
@@ -98,15 +120,15 @@ const DOMAIN_NODES: DomainNode[] = [
   },
   {
     id: 'swe',
-    name: 'Data Structures & Algorithms',
-    shortName: 'Algorithms & SWE',
-    color: '#fbbf24',
-    glowColor: 'rgba(251, 191, 36, 0.4)',
-    cx: 365,
-    cy: 285,
-    r: 58,
-    icon: <Terminal className="w-5 h-5 text-amber-400" />,
-    tagline: 'Competitive programming rigor, asymptotic complexity, graphs & DP.',
+    name: 'Algorithms & DSA',
+    shortName: 'DSA / SWE',
+    subtitle: '550+ Solved • LeetCode 1671',
+    color: '#fbbf24', // Amber
+    cx: 106,
+    cy: 130,
+    r: 45,
+    icon: <Terminal className="w-4 h-4 text-amber-400" />,
+    summary: 'Competitive programming rigor, asymptotic complexity optimization, graph algorithms, and clean system design.',
     coreConcepts: [
       'Graph Traversal & DAG Scheduling',
       'Dynamic Programming State Spaces',
@@ -120,44 +142,36 @@ const DOMAIN_NODES: DomainNode[] = [
   },
 ];
 
-const CENTER_HUB = {
-  id: 'system-design',
-  name: 'System Design & Architecture',
-  shortName: 'System Design Hub',
-  color: '#c084fc',
-  glowColor: 'rgba(192, 132, 252, 0.5)',
-  cx: 230,
-  cy: 185,
-  r: 54,
-  tagline: 'Architecting high availability, decoupled storage, caching tiers, and event streaming.',
-  coreConcepts: [
-    'Memory Decoupling (S3 + Redis)',
-    'Real-time Server-Sent Events (SSE)',
-    'Adaptive Polling (10s → 45s, 3× cut)',
-    'Shared Infra Test Chaining (5-6 min saved)',
-    'High Concurrency & Fault Tolerance',
-  ],
-  techStack: ['Redis', 'Amazon S3', 'Server-Sent Events (SSE)', 'Kafka / Async', 'Microservices'],
-  verifiedMetric: 'Zero Heap Spikes • ~3× Request Cut • Real-Time SSE',
-  appliedWork: 'Engineered presigned S3 + Redis case caching avoiding backend OOM crashes on high-res photos, streaming real-time SSE progress.',
-};
+// Complete graph connections (all equal pairs connected)
+const CONNECTIONS: [number, number][] = [
+  // Outer perimeter loop
+  [0, 1],
+  [1, 2],
+  [2, 3],
+  [3, 4],
+  [4, 0],
+  // Cross mesh connections
+  [0, 2],
+  [0, 3],
+  [1, 3],
+  [1, 4],
+  [2, 4],
+];
 
 export const DistributedSystemCanvas: React.FC = () => {
-  const [selectedId, setSelectedId] = useState<string>('system-design');
-  const [pulseStep, setPulseStep] = useState(0);
+  const [selectedId, setSelectedId] = useState<string>('backend');
+  const [pulseProgress, setPulseProgress] = useState(0);
 
-  // Pulse animation loop
+  // Smooth pulse loop
   useEffect(() => {
     const timer = setInterval(() => {
-      setPulseStep((prev) => (prev + 1) % 100);
-    }, 40);
+      setPulseProgress((prev) => (prev + 1) % 100);
+    }, 45);
     return () => clearInterval(timer);
   }, []);
 
   const activeData =
-    selectedId === 'system-design'
-      ? CENTER_HUB
-      : DOMAIN_NODES.find((n) => n.id === selectedId) || CENTER_HUB;
+    EQUAL_DOMAINS.find((d) => d.id === selectedId) || EQUAL_DOMAINS[0];
 
   return (
     <div className="relative w-full rounded-2xl border border-white/10 bg-[#070b14]/90 overflow-hidden backdrop-blur-xl shadow-2xl flex flex-col font-sans">
@@ -169,75 +183,67 @@ export const DistributedSystemCanvas: React.FC = () => {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
           </span>
           <span className="text-white font-bold tracking-wider">
-            SYSTEMS ARCHITECTURE & CAPABILITY RADAR
+            EQUAL ENGINEERING COMPETENCY MESH
           </span>
         </div>
-        <span className="text-slate-400 text-[11px] hidden sm:inline">
-          5 CONNECTED DOMAINS
-        </span>
+        <div className="flex items-center gap-1.5 text-[11px] text-slate-400">
+          <span className="text-cyan-400 font-semibold">5 / 5 CORE PILLARS</span>
+          <span className="text-slate-600">•</span>
+          <span>FULLY INTERCONNECTED</span>
+        </div>
       </div>
 
-      {/* Visual Orbital SVG Diagram */}
+      {/* Symmetrical Equal Peer Mesh Visual */}
       <div className="relative p-3 sm:p-5 flex items-center justify-center min-h-[300px] tech-grid-bg overflow-hidden">
-        {/* Glow backdrop behind center */}
-        <div className="absolute w-60 h-60 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+        {/* Ambient radial depth glow */}
+        <div className="absolute w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative w-full max-w-[460px] aspect-[460/370]">
-          <svg viewBox="0 0 460 370" className="w-full h-full drop-shadow-2xl">
+        <div className="relative w-full max-w-[440px] aspect-[440/340]">
+          <svg viewBox="0 0 440 340" className="w-full h-full drop-shadow-2xl">
             <defs>
-              {/* Gradients for Nodes */}
-              <radialGradient id="grad-center" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#c084fc" stopOpacity="0.4" />
-                <stop offset="100%" stopColor="#7e22ce" stopOpacity="0.15" />
-              </radialGradient>
-              <radialGradient id="grad-backend" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.35" />
-                <stop offset="100%" stopColor="#0369a1" stopOpacity="0.1" />
-              </radialGradient>
-              <radialGradient id="grad-agentic" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#818cf8" stopOpacity="0.35" />
-                <stop offset="100%" stopColor="#4338ca" stopOpacity="0.1" />
-              </radialGradient>
-              <radialGradient id="grad-vision" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#34d399" stopOpacity="0.35" />
-                <stop offset="100%" stopColor="#047857" stopOpacity="0.1" />
-              </radialGradient>
-              <radialGradient id="grad-swe" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#fbbf24" stopOpacity="0.35" />
-                <stop offset="100%" stopColor="#b45309" stopOpacity="0.1" />
-              </radialGradient>
+              {EQUAL_DOMAINS.map((d) => (
+                <radialGradient key={`grad-${d.id}`} id={`grad-${d.id}`} cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor={d.color} stopOpacity="0.4" />
+                  <stop offset="100%" stopColor={d.color} stopOpacity="0.08" />
+                </radialGradient>
+              ))}
             </defs>
 
-            {/* Connecting Geometric Lines between Center and Satellites */}
-            {DOMAIN_NODES.map((d) => {
-              const isSelected = selectedId === d.id || selectedId === 'system-design';
+            {/* Complete Interconnecting Network Mesh Lines */}
+            {CONNECTIONS.map(([i, j], idx) => {
+              const d1 = EQUAL_DOMAINS[i];
+              const d2 = EQUAL_DOMAINS[j];
+              const isHighlighted = selectedId === d1.id || selectedId === d2.id;
+
               return (
-                <g key={`line-${d.id}`}>
-                  {/* Base connection line */}
+                <g key={`edge-${idx}`}>
                   <line
-                    x1={CENTER_HUB.cx}
-                    y1={CENTER_HUB.cy}
-                    x2={d.cx}
-                    y2={d.cy}
-                    stroke={isSelected ? d.color : 'rgba(255,255,255,0.15)'}
-                    strokeWidth={isSelected ? '2' : '1'}
-                    strokeDasharray={isSelected ? 'none' : '4,4'}
+                    x1={d1.cx}
+                    y1={d1.cy}
+                    x2={d2.cx}
+                    y2={d2.cy}
+                    stroke={isHighlighted ? d1.color : 'rgba(255,255,255,0.12)'}
+                    strokeWidth={isHighlighted ? '1.8' : '0.8'}
+                    strokeDasharray={isHighlighted ? 'none' : '3,3'}
+                    opacity={isHighlighted ? 0.8 : 0.4}
                   />
 
-                  {/* Flowing packet pulse along the line */}
-                  <circle
-                    cx={CENTER_HUB.cx + ((d.cx - CENTER_HUB.cx) * (pulseStep % 100)) / 100}
-                    cy={CENTER_HUB.cy + ((d.cy - CENTER_HUB.cy) * (pulseStep % 100)) / 100}
-                    r={2.5}
-                    fill={d.color}
-                    className="drop-shadow-[0_0_6px_currentColor]"
-                  />
+                  {/* Flowing signal packet along the edge */}
+                  {isHighlighted && (
+                    <circle
+                      cx={d1.cx + ((d2.cx - d1.cx) * (pulseProgress % 100)) / 100}
+                      cy={d1.cy + ((d2.cy - d1.cy) * (pulseProgress % 100)) / 100}
+                      r={2}
+                      fill={d1.color}
+                      className="drop-shadow-[0_0_6px_currentColor]"
+                    />
+                  )}
                 </g>
               );
             })}
 
-            {/* Satellite Circles */}
-            {DOMAIN_NODES.map((d) => {
+            {/* 5 Equal Circular Nodes */}
+            {EQUAL_DOMAINS.map((d) => {
               const isSelected = selectedId === d.id;
 
               return (
@@ -246,22 +252,22 @@ export const DistributedSystemCanvas: React.FC = () => {
                   onClick={() => setSelectedId(d.id)}
                   className="cursor-pointer transition-all duration-300 group"
                 >
-                  {/* Outer pulse ring on select */}
+                  {/* Outer selection ring */}
                   {isSelected && (
                     <circle
                       cx={d.cx}
                       cy={d.cy}
-                      r={d.r + 6}
+                      r={d.r + 5}
                       fill="none"
                       stroke={d.color}
-                      strokeWidth="1.5"
+                      strokeWidth="2"
                       strokeDasharray="4,4"
                       className="animate-spin"
                       style={{ transformOrigin: `${d.cx}px ${d.cy}px`, animationDuration: '8s' }}
                     />
                   )}
 
-                  {/* Main Node Circle */}
+                  {/* Node Circle */}
                   <circle
                     cx={d.cx}
                     cy={d.cy}
@@ -269,124 +275,64 @@ export const DistributedSystemCanvas: React.FC = () => {
                     fill={`url(#grad-${d.id})`}
                     stroke={isSelected ? d.color : 'rgba(255,255,255,0.25)'}
                     strokeWidth={isSelected ? '2.5' : '1.5'}
-                    className="group-hover:stroke-white transition-all"
+                    className="group-hover:stroke-white transition-all shadow-xl"
                   />
 
-                  {/* Node Title */}
+                  {/* Domain Name */}
                   <text
                     x={d.cx}
-                    y={d.cy - 12}
+                    y={d.cy - 7}
                     textAnchor="middle"
                     fill="#ffffff"
-                    fontSize="11"
-                    fontWeight="700"
+                    fontSize="10"
+                    fontWeight="800"
                     fontFamily="sans-serif"
+                    letterSpacing="0.02em"
                   >
-                    {d.shortName.split(' ')[0]}
-                  </text>
-                  <text
-                    x={d.cx}
-                    y={d.cy + 3}
-                    textAnchor="middle"
-                    fill="#ffffff"
-                    fontSize="11"
-                    fontWeight="700"
-                    fontFamily="sans-serif"
-                  >
-                    {d.shortName.split(' ').slice(1).join(' ')}
+                    {d.shortName}
                   </text>
 
-                  {/* Micro subtext */}
+                  {/* Micro Tech Pill */}
                   <text
                     x={d.cx}
-                    y={d.cy + 22}
+                    y={d.cy + 10}
                     textAnchor="middle"
                     fill={d.color}
-                    fontSize="8.5"
+                    fontSize="8"
                     fontFamily="monospace"
+                    fontWeight="600"
                   >
                     {d.techStack[0]} • {d.techStack[1]}
                   </text>
                 </g>
               );
             })}
-
-            {/* Center Hub: SYSTEM DESIGN & ARCHITECTURE */}
-            <g
-              onClick={() => setSelectedId('system-design')}
-              className="cursor-pointer transition-all duration-300 group"
-            >
-              {/* Outer rotating dash ring */}
-              <circle
-                cx={CENTER_HUB.cx}
-                cy={CENTER_HUB.cy}
-                r={CENTER_HUB.r + 7}
-                fill="none"
-                stroke={selectedId === 'system-design' ? '#c084fc' : 'rgba(192, 132, 252, 0.4)'}
-                strokeWidth={selectedId === 'system-design' ? '2' : '1'}
-                strokeDasharray="6,4"
-                className="animate-spin"
-                style={{
-                  transformOrigin: `${CENTER_HUB.cx}px ${CENTER_HUB.cy}px`,
-                  animationDuration: '12s',
-                }}
-              />
-
-              {/* Center Main Circle */}
-              <circle
-                cx={CENTER_HUB.cx}
-                cy={CENTER_HUB.cy}
-                r={CENTER_HUB.r}
-                fill="url(#grad-center)"
-                stroke={selectedId === 'system-design' ? '#e9d5ff' : '#c084fc'}
-                strokeWidth={selectedId === 'system-design' ? '3' : '2'}
-                className="group-hover:scale-105 transition-all shadow-xl"
-              />
-
-              {/* Center Hub Text */}
-              <text
-                x={CENTER_HUB.cx}
-                y={CENTER_HUB.cy - 12}
-                textAnchor="middle"
-                fill="#ffffff"
-                fontSize="10"
-                fontWeight="800"
-                fontFamily="sans-serif"
-                letterSpacing="0.06em"
-              >
-                SYSTEM DESIGN
-              </text>
-              <text
-                x={CENTER_HUB.cx}
-                y={CENTER_HUB.cy + 3}
-                textAnchor="middle"
-                fill="#ffffff"
-                fontSize="9"
-                fontWeight="700"
-                fontFamily="sans-serif"
-              >
-                & ARCHITECTURE
-              </text>
-              <text
-                x={CENTER_HUB.cx}
-                y={CENTER_HUB.cy + 19}
-                textAnchor="middle"
-                fill="#c084fc"
-                fontSize="8"
-                fontFamily="monospace"
-                fontWeight="600"
-              >
-                [CENTRAL HUB]
-              </text>
-            </g>
           </svg>
         </div>
       </div>
 
+      {/* Domain Quick-Select Filter Tabs */}
+      <div className="px-3 py-2 bg-[#060a12] border-t border-b border-white/5 flex flex-wrap gap-1.5 justify-center">
+        {EQUAL_DOMAINS.map((d) => (
+          <button
+            key={d.id}
+            onClick={() => setSelectedId(d.id)}
+            className={`px-2.5 py-1 rounded-lg text-xs font-mono transition-all cursor-pointer flex items-center gap-1.5 ${
+              selectedId === d.id
+                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm'
+                : 'bg-slate-900/50 text-slate-400 hover:text-white border border-white/5'
+            }`}
+          >
+            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: d.color }} />
+            <span>{d.name}</span>
+          </button>
+        ))}
+      </div>
+
       {/* Selected Domain Breakdown Drawer */}
-      <div className="border-t border-white/10 bg-[#060a12] p-4 sm:p-5 font-sans space-y-3">
+      <div className="bg-[#05080f] p-4 sm:p-5 font-sans space-y-3">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-2">
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2">
             <span
               className="w-3 h-3 rounded-full"
               style={{ backgroundColor: activeData.color }}
@@ -401,13 +347,13 @@ export const DistributedSystemCanvas: React.FC = () => {
         </div>
 
         <p className="text-xs text-slate-300 leading-relaxed">
-          {activeData.tagline}
+          {activeData.summary}
         </p>
 
         {/* Mastered Concepts Badges */}
         <div className="space-y-1">
           <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider block">
-            CONCEPTS & ARCHITECTURAL PATTERNS
+            MASTERED ARCHITECTURAL CONCEPTS
           </span>
           <div className="flex flex-wrap gap-1.5">
             {activeData.coreConcepts.map((concept) => (
