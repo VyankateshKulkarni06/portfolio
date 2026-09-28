@@ -22,16 +22,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           {/* Left Column: Engineer Profile & Statement */}
           <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-center">
-            {/* System Status Pill */}
-            <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-[#0d1424]/90 border border-cyan-500/30 w-fit mb-6 text-xs font-mono text-cyan-300 backdrop-blur-md">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
-              </span>
-              <span className="tracking-wide">ENGINEERING SYSTEMS // 2026</span>
-              <span className="text-slate-600">•</span>
-              <span className="text-slate-400">GO • SPRING BOOT • AI PIPELINES</span>
-            </div>
+
 
             {/* Engineer Name */}
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-sans leading-[1.1]">
