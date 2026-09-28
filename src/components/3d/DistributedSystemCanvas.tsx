@@ -217,7 +217,7 @@ export const DistributedSystemCanvas: React.FC = () => {
         {/* Mastered Concepts Grid */}
         <div>
           <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block mb-2">
-            // MASTERED ARCHITECTURAL CONCEPTS & PATTERNS
+            MASTERED ARCHITECTURAL CONCEPTS & PATTERNS
           </span>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
             {activeDomain.concepts.map((concept, idx) => (
@@ -238,7 +238,7 @@ export const DistributedSystemCanvas: React.FC = () => {
         {/* Applied Engineering Evidence */}
         <div className="p-3 rounded-xl bg-cyan-950/20 border border-cyan-800/30 text-xs">
           <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-wider block mb-1">
-            // PRODUCTION EVIDENCE
+            PRODUCTION EVIDENCE
           </span>
           <p className="text-slate-300 leading-relaxed font-sans">
             {activeDomain.evidence}

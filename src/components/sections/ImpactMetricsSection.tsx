@@ -34,7 +34,7 @@ export const ImpactMetricsSection: React.FC = () => {
         <div className="mt-8 flex items-center justify-between p-4 rounded-xl bg-slate-900/40 border border-white/5 text-xs font-mono text-slate-400">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-cyan-400" />
-            <span>AUDITED SYSTEM DATA // 100% SOURCED FROM ACTIVE RESUME WORK</span>
+            <span>AUDITED SYSTEM DATA • 100% SOURCED FROM ACTIVE RESUME WORK</span>
           </div>
           <span className="hidden sm:inline text-slate-500">
             NO ESTIMATES • NO FABRICATIONS

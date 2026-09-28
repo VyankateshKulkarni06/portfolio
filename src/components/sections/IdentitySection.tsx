@@ -34,7 +34,7 @@ export const IdentitySection: React.FC = () => {
         <div className="mb-14 p-8 rounded-2xl bg-gradient-to-r from-[#0b1220]/90 via-[#0f172a]/80 to-[#0b1220]/90 border border-cyan-500/20 shadow-xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
           <p className="font-mono text-xs uppercase tracking-widest text-cyan-400 mb-2">
-            // CORE THESIS
+            CORE THESIS
           </p>
           <blockquote className="text-xl sm:text-2xl md:text-3xl font-medium text-slate-100 font-sans leading-snug">
             "{PERSONAL_INFO.anchorStatement}"

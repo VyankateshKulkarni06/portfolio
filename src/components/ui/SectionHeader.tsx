@@ -20,7 +20,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
       {/* Technical Number & Badge */}
       <div className="flex items-center gap-3 mb-2">
         <span className="font-mono text-xs font-semibold text-cyan-400 bg-cyan-950/40 px-2.5 py-0.5 rounded border border-cyan-800/50 tracking-wider">
-          {number} // {badge.toUpperCase()}
+          {number} • {badge.toUpperCase()}
         </span>
         <div className="h-px w-10 bg-gradient-to-r from-cyan-500/50 to-transparent" />
       </div>

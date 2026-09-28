@@ -30,10 +30,10 @@ export const PersonalSection: React.FC = () => {
             </div>
             <div className="pt-4 flex flex-wrap gap-2 text-xs font-mono text-cyan-300">
               <span className="bg-cyan-950/40 px-3 py-1 rounded-md border border-cyan-800/40">
-                // FIRST-PRINCIPLES THINKING
+                FIRST-PRINCIPLES THINKING
               </span>
               <span className="bg-cyan-950/40 px-3 py-1 rounded-md border border-cyan-800/40">
-                // ARCHITECTURAL DISCIPLINE
+                ARCHITECTURAL DISCIPLINE
               </span>
             </div>
           </div>

@@ -21,7 +21,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#080d18]">
           <div className="flex items-center gap-3">
             <span className="font-mono text-xs text-cyan-400 bg-cyan-950/60 px-2.5 py-1 rounded border border-cyan-800/40">
-              RESUME // AUDITED REVISION 2026
+              RESUME • AUDITED REVISION 2026
             </span>
             <span className="text-xs text-slate-400 hidden sm:inline">
               Vyankatesh Kulkarni — Software Engineer

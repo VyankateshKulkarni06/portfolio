@@ -112,7 +112,7 @@ export const ExperienceSection: React.FC = () => {
               {/* Verified Facts & Architectural Contributions */}
               <div className="space-y-3.5">
                 <h4 className="font-mono text-xs uppercase tracking-wider text-slate-400 mb-2">
-                  // VERIFIED ENGINEERING CONTRIBUTIONS
+                  VERIFIED ENGINEERING CONTRIBUTIONS
                 </h4>
                 {activeExp.bulletPoints.map((point, idx) => (
                   <div key={idx} className="flex items-start gap-3">

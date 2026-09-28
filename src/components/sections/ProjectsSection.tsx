@@ -40,7 +40,7 @@ export const ProjectsSection: React.FC = () => {
               <div className="lg:col-span-7 space-y-4">
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="font-mono text-xs text-indigo-400 bg-indigo-950/40 px-3 py-1 rounded-md border border-indigo-800/40">
-                    DISTRIBUTED SYSTEMS // BLOCKCHAIN
+                    DISTRIBUTED SYSTEMS • BLOCKCHAIN
                   </span>
                   <span className="font-mono text-xs text-slate-400">
                     DYNAMIC SCHEMA ENGINE
@@ -61,7 +61,7 @@ export const ProjectsSection: React.FC = () => {
 
                 <div className="space-y-2.5 pt-2">
                   <h4 className="font-mono text-xs uppercase tracking-wider text-slate-400">
-                    // KEY ARCHITECTURAL ACHIEVEMENTS
+                    KEY ARCHITECTURAL ACHIEVEMENTS
                   </h4>
                   <div className="flex items-start gap-2.5 text-xs text-slate-300">
                     <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-1.5 shrink-0" />
@@ -127,7 +127,7 @@ export const ProjectsSection: React.FC = () => {
               <div className="lg:col-span-7 space-y-4">
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="font-mono text-xs text-cyan-400 bg-cyan-950/40 px-3 py-1 rounded-md border border-cyan-800/40">
-                    AGENTIC AI // LEGAL REASONING
+                    AGENTIC AI • LEGAL REASONING
                   </span>
                   <span className="font-mono text-xs text-slate-400">
                     10K+ VECTOR CORPUS SEARCH
@@ -148,7 +148,7 @@ export const ProjectsSection: React.FC = () => {
 
                 <div className="space-y-2.5 pt-2">
                   <h4 className="font-mono text-xs uppercase tracking-wider text-slate-400">
-                    // KEY ARCHITECTURAL ACHIEVEMENTS
+                    KEY ARCHITECTURAL ACHIEVEMENTS
                   </h4>
                   <div className="flex items-start gap-2.5 text-xs text-slate-300">
                     <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-1.5 shrink-0" />
