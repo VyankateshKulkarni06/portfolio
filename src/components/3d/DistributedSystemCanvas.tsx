@@ -245,20 +245,7 @@ export const DistributedSystemCanvas: React.FC = () => {
           </p>
         </div>
 
-        {/* Technology Badges */}
-        <div className="flex flex-wrap items-center gap-1.5 pt-1">
-          <span className="text-[10px] font-mono text-slate-500 uppercase mr-1">
-            TOOLCHAIN:
-          </span>
-          {activeDomain.techStack.map((tech) => (
-            <span
-              key={tech}
-              className="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-900 border border-white/10 text-slate-300"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
+
       </div>
     </div>
   );
